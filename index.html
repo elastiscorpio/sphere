@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Poppins:wght@300;400;600;700&display=swap');
-
+        
         :root {
             --primary: #3a0ca3;
             --secondary: #f72585;
@@ -16,71 +16,71 @@
             --dark: #1a1a2e;
             --light: #f8f9fa;
         }
-
+        
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f5f5f5;
         }
-
+        
         .card-font {
             font-family: 'MedievalSharp', cursive;
         }
-
+        
         .card-container {
             perspective: 1000px;
         }
-
+        
         .card-inner {
             transition: transform 0.8s;
             transform-style: preserve-3d;
         }
-
+        
         .card-container:hover .card-inner {
             transform: rotateY(180deg);
         }
-
+        
         .card-front, .card-back {
             backface-visibility: hidden;
         }
-
+        
         .card-back {
             transform: rotateY(180deg);
         }
-
+        
         .common {
             border-color: #6b7280;
             box-shadow: 0 4px 6px -1px rgba(107, 114, 128, 0.3);
         }
-
+        
         .uncommon {
             border-color: #10b981;
             box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
         }
-
+        
         .rare {
             border-color: #3b82f6;
             box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
         }
-
+        
         .epic {
             border-color: #8b5cf6;
             box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);
         }
-
+        
         .legendary {
             border-color: #f59e0b;
             box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
         }
-
+        
         .gradient-bg {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
-
+        
         .product-card:hover {
             transform: translateY(-5px);
             transition: all 0.3s ease;
         }
-
+        
         .rarity-dot {
             width: 12px;
             height: 12px;
@@ -91,6 +91,413 @@
     </style>
 </head>
 <body class="min-h-screen">
-<!-- CONTENT OMITTED FOR BREVITY - FULL CONTENT WILL BE SAVED -->
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-bold card-font">MYTHIC COLLECTIBLES</div>
+                </div>
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#cards" class="hover:text-var(--accent) transition">Cards</a>
+                    <a href="#merch" class="hover:text-var(--accent) transition">Merchandise</a>
+                    <a href="#about" class="hover:text-var(--accent) transition">About</a>
+                    <a href="#contact" class="hover:text-var(--accent) transition">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-var(--accent) transition">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </a>
+                    <button class="md:hidden focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-6 card-font">UNLEASH THE LEGENDS</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Discover rare collectible cards and premium merchandise from the world's most epic fantasy universe.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#cards" class="bg-white text-purple-800 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">Explore Cards</a>
+                <a href="#merch" class="bg-transparent border-2 border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-purple-800 transition">Shop Merch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Card Section -->
+    <section id="cards" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 card-font">FEATURED CARDS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="card-container w-full h-96 mx-auto">
+                    <div class="card-inner w-full h-full relative">
+                        <!-- Front of Card -->
+                        <div class="card-front absolute w-full h-full bg-white rounded-xl shadow-xl overflow-hidden border-4 legendary">
+                            <div class="h-1/2 bg-gradient-to-b from-yellow-100 to-yellow-300 p-4">
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-black text-yellow-300 px-3 py-1 rounded-full text-sm font-bold">LEGENDARY</span>
+                                    <span class="bg-white text-black px-3 py-1 rounded-full text-sm font-bold">#001</span>
+                                </div>
+                            </div>
+                            <div class="h-1/2 p-4 relative">
+                                <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-white rounded-full border-4 border-yellow-500 overflow-hidden shadow-lg">
+                                    <img src="https://via.placeholder.com/200x200/f59e0b/ffffff?text=Dragon" alt="Card Art" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-xl font-bold text-center mt-16 mb-2 card-font">Ancient Fire Dragon</h3>
+                                <p class="text-gray-600 text-sm text-center">"A primordial beast whose breath can melt mountains"</p>
+                                <div class="absolute bottom-2 left-0 right-0 text-center">
+                                    <span class="text-xs bg-yellow-500 text-white px-2 py-1 rounded-full">Attack: 9 | Defense: 8</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Back of Card -->
+                        <div class="card-back absolute w-full h-full bg-gray-100 rounded-xl shadow-xl overflow-hidden border-4 border-gray-300 p-4">
+                            <div class="bg-white h-full rounded-lg p-4">
+                                <h3 class="text-xl font-bold mb-2 card-font">Ancient Fire Dragon</h3>
+                                <div class="flex items-center mb-3">
+                                    <span class="rarity-dot bg-yellow-500"></span>
+                                    <span class="text-sm font-bold">Legendary</span>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    The Ancient Fire Dragon is said to be one of the first creatures born from the world's core. Its scales are harder than diamond, and its fiery breath can reduce entire cities to ash in moments. Only the bravest (or most foolish) adventurers dare seek this beast.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <p><strong>Artist:</strong> Elena Vizerskaya</p>
+                                    <p><strong>Set:</strong> Primordial Awakening</p>
+                                    <p><strong>Release Date:</strong> June 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card-container w-full h-96 mx-auto">
+                    <div class="card-inner w-full h-full relative">
+                        <!-- Front of Card -->
+                        <div class="card-front absolute w-full h-full bg-white rounded-xl shadow-xl overflow-hidden border-4 epic">
+                            <div class="h-1/2 bg-gradient-to-b from-purple-100 to-purple-300 p-4">
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-black text-purple-300 px-3 py-1 rounded-full text-sm font-bold">EPIC</span>
+                                    <span class="bg-white text-black px-3 py-1 rounded-full text-sm font-bold">#042</span>
+                                </div>
+                            </div>
+                            <div class="h-1/2 p-4 relative">
+                                <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-white rounded-full border-4 border-purple-500 overflow-hidden shadow-lg">
+                                    <img src="https://via.placeholder.com/200x200/8b5cf6/ffffff?text=Elf" alt="Card Art" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-xl font-bold text-center mt-16 mb-2 card-font">Sylvan Archer</h3>
+                                <p class="text-gray-600 text-sm text-center">"Her arrows never miss their mark"</p>
+                                <div class="absolute bottom-2 left-0 right-0 text-center">
+                                    <span class="text-xs bg-purple-500 text-white px-2 py-1 rounded-full">Attack: 7 | Defense: 5</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Back of Card -->
+                        <div class="card-back absolute w-full h-full bg-gray-100 rounded-xl shadow-xl overflow-hidden border-4 border-gray-300 p-4">
+                            <div class="bg-white h-full rounded-lg p-4">
+                                <h3 class="text-xl font-bold mb-2 card-font">Sylvan Archer</h3>
+                                <div class="flex items-center mb-3">
+                                    <span class="rarity-dot bg-purple-500"></span>
+                                    <span class="text-sm font-bold">Epic</span>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    Trained from childhood in the sacred groves of the Sylvan Elves, these archers can hit a target from impossible distances. Their arrows are imbued with ancient magic that can pierce through even magical barriers. Legends say a single Sylvan Archer once held off an entire orc battalion.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <p><strong>Artist:</strong> Jakub Różalski</p>
+                                    <p><strong>Set:</strong> Forests of Eld</p>
+                                    <p><strong>Release Date:</strong> March 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card-container w-full h-96 mx-auto">
+                    <div class="card-inner w-full h-full relative">
+                        <!-- Front of Card -->
+                        <div class="card-front absolute w-full h-full bg-white rounded-xl shadow-xl overflow-hidden border-4 rare">
+                            <div class="h-1/2 bg-gradient-to-b from-blue-100 to-blue-300 p-4">
+                                <div class="flex justify-between items-start">
+                                    <span class="bg-black text-blue-300 px-3 py-1 rounded-full text-sm font-bold">RARE</span>
+                                    <span class="bg-white text-black px-3 py-1 rounded-full text-sm font-bold">#117</span>
+                                </div>
+                            </div>
+                            <div class="h-1/2 p-4 relative">
+                                <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-white rounded-full border-4 border-blue-500 overflow-hidden shadow-lg">
+                                    <img src="https://via.placeholder.com/200x200/3b82f6/ffffff?text=Knight" alt="Card Art" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-xl font-bold text-center mt-16 mb-2 card-font">Crimson Templar</h3>
+                                <p class="text-gray-600 text-sm text-center">"His blade purges evil with holy fire"</p>
+                                <div class="absolute bottom-2 left-0 right-0 text-center">
+                                    <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">Attack: 6 | Defense: 7</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Back of Card -->
+                        <div class="card-back absolute w-full h-full bg-gray-100 rounded-xl shadow-xl overflow-hidden border-4 border-gray-300 p-4">
+                            <div class="bg-white h-full rounded-lg p-4">
+                                <h3 class="text-xl font-bold mb-2 card-font">Crimson Templar</h3>
+                                <div class="flex items-center mb-3">
+                                    <span class="rarity-dot bg-blue-500"></span>
+                                    <span class="text-sm font-bold">Rare</span>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    The Crimson Templars are an elite order of holy warriors who have sworn to eradicate all forms of dark magic. Their armor is enchanted to resist necrotic energies, and their greatswords burn with celestial fire. Each templar undergoes years of rigorous training and spiritual purification.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <p><strong>Artist:</strong> Raymond Swanland</p>
+                                    <p><strong>Set:</strong> Divine Retribution</p>
+                                    <p><strong>Release Date:</strong> January 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-purple-800 text-white px-8 py-3 rounded-full font-bold hover:bg-purple-700 transition">View All Cards</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section id="merch" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 card-font">MERCHANDISE</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Lithophane -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x400/f3f4f6/374151?text=Lithophane" alt="Lithophane" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <span class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">NEW</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Glowstone Lithophane</h3>
+                        <p class="text-gray-600 text-sm mb-2">Illuminated 3D-printed artwork</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-purple-800">$49.99</span>
+                            <button class="bg-purple-800 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Poster -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x400/f3f4f6/374151?text=Poster" alt="Poster" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Legends Collection Poster</h3>
+                        <p class="text-gray-600 text-sm mb-2">24" x 36" premium print</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-purple-800">$24.99</span>
+                            <button class="bg-purple-800 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stickers -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x400/f3f4f6/374151?text=Stickers" alt="Stickers" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Holographic Sticker Pack</h3>
+                        <p class="text-gray-600 text-sm mb-2">Set of 12 premium stickers</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-purple-800">$14.99</span>
+                            <button class="bg-purple-800 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- T-Shirt -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x400/f3f4f6/374151?text=T-Shirt" alt="T-Shirt" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">SALE</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Limited Edition Tee</h3>
+                        <p class="text-gray-600 text-sm mb-2">100% cotton, unisex fit</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-purple-800">$19.99</span>
+                                <span class="text-xs text-gray-500 line-through ml-1">$29.99</span>
+                            </div>
+                            <button class="bg-purple-800 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-700 transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-purple-800 text-white px-8 py-3 rounded-full font-bold hover:bg-purple-700 transition">View All Merchandise</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <h2 class="text-3xl font-bold mb-6 card-font">OUR STORY</h2>
+                    <p class="text-gray-700 mb-4">
+                        Mythic Collectibles was born from a passion for fantasy art and tabletop gaming. Our founder, a lifelong collector and artist, wanted to create a world where breathtaking artwork meets immersive gameplay.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        Each card in our collection is a masterpiece, illustrated by some of the most talented fantasy artists in the world. We work closely with our artists to ensure every detail captures the essence of the characters and creatures we bring to life.
+                    </p>
+                    <p class="text-gray-700">
+                        Beyond cards, we've expanded into high-quality merchandise that lets fans showcase their favorite characters in everyday life. From glow-in-the-dark lithophanes to premium apparel, our products are designed with the same attention to detail as our cards.
+                    </p>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-100 rounded-xl overflow-hidden shadow-xl">
+                        <img src="https://via.placeholder.com/800x500/f3f4f6/374151?text=Our+Team" alt="Our Team" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 card-font">GET IN TOUCH</h2>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-purple-800 text-white p-8">
+                        <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-map-marker-alt mr-3"></i>
+                                <span>123 Fantasy Lane, Mythic City, MC 12345</span>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-phone-alt mr-3"></i>
+                                <span>(555) 123-4567</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope mr-3"></i>
+                                <span>contact@mythiccollectibles.com</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-white hover:text-purple-300 transition"><i class="fab fa-twitter fa-lg"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 transition"><i class="fab fa-instagram fa-lg"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 transition"><i class="fab fa-facebook-f fa-lg"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 transition"><i class="fab fa-discord fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-purple-800 text-white py-2 px-4 rounded-md font-bold hover:bg-purple-700 transition">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">JOIN OUR MYTHIC COMMUNITY</h2>
+            <p class="mb-6 max-w-2xl mx-auto">Subscribe to our newsletter for exclusive card reveals, merch drops, and special offers.</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-md focus:outline-none text-gray-900">
+                <button class="bg-yellow-500 text-gray-900 px-6 py-3 rounded-r-md font-bold hover:bg-yellow-400 transition">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-2xl font-bold card-font">MYTHIC COLLECTIBLES</div>
+                    <p class="text-gray-400 text-sm mt-1">© 2023 Mythic Collectibles. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Shipping</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to handle mobile menu toggle if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenu = document.querySelector('.hidden.md\\:flex');
+            
+            if(mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                    mobileMenu.classList.toggle('flex-col');
+                    mobileMenu.classList.toggle('absolute');
+                    mobileMenu.classList.toggle('top-16');
+                    mobileMenu.classList.toggle('left-0');
+                    mobileMenu.classList.toggle('right-0');
+                    mobileMenu.classList.toggle('bg-purple-900');
+                    mobileMenu.classList.toggle('p-4');
+                    mobileMenu.classList.toggle('space-y-4');
+                    mobileMenu.classList.toggle('space-x-0');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
