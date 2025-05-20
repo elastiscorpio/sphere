@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mythic Collectibles - Character Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #3a0ca3;
+            --secondary: #f72585;
+            --accent: #4cc9f0;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .card-font {
+            font-family: 'MedievalSharp', cursive;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .rarity-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .modal-content {
+            transition: transform 0.3s ease;
+            transform: scale(0.9);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .common-border {
+            border-color: #6b7280;
+        }
+        
+        .uncommon-border {
+            border-color: #10b981;
+        }
+        
+        .rare-border {
+            border-color: #3b82f6;
+        }
+        
+        .epic-border {
+            border-color: #8b5cf6;
+        }
+        
+        .legendary-border {
+            border-color: #f59e0b;
+        }
+        
+        .mythic-border {
+            border-color: #ec4899;
+        }
+        
+        .common-bg {
+            background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        }
+        
+        .uncommon-bg {
+            background: linear-gradient(135deg, #d1fae5 0%, #6ee7b7 100%);
+        }
+        
+        .rare-bg {
+            background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
+        }
+        
+        .epic-bg {
+            background: linear-gradient(135deg, #ede9fe 0%, #c4b5fd 100%);
+        }
+        
+        .legendary-bg {
+            background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%);
+        }
+        
+        .mythic-bg {
+            background: linear-gradient(135deg, #fce7f3 0%, #f472b6 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-bold card-font">MYTHIC COLLECTIBLES</div>
+                </div>
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#cards" class="hover:text-var(--accent) transition">Cards</a>
+                    <a href="#coins" class="hover:text-var(--accent) transition">Coins</a>
+                    <a href="#merch" class="hover:text-var(--accent) transition">Merchandise</a>
+                    <a href="#about" class="hover:text-var(--accent) transition">About</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-var(--accent) transition">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </a>
+                    <button class="md:hidden focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-6 card-font">LEGENDARY CHARACTER GALLERY</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Explore the complete collection of iconic characters from our fantasy universe.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#gallery" class="bg-white text-purple-800 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">View Gallery</a>
+                <a href="#rarities" class="bg-transparent border-2 border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-purple-800 transition">Learn About Rarities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 card-font">CHARACTER GALLERY</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Character 1 - Legendary -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Ancient Fire Dragon', 'legendary', '🔥 Dragon of the Eternal Flame', 'The Ancient Fire Dragon is said to have emerged from the core of the world itself. Its breath can melt mountains and its scales are harder than diamond.', '$499.99', 'https://images.unsplash.com/photo-1586810720141-7af3b2bc6e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="h-64 legendary-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1586810720141-7af3b2-c6e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Ancient Fire Dragon" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 legendary-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Ancient Fire Dragon</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-yellow-500"></span>
+                            <span class="text-sm font-bold">Legendary</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">🔥 Dragon of the Eternal Flame</p>
+                        <div class="text-purple-800 font-bold text-lg">$499.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 2 - Epic -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Sylvan Archer', 'epic', '🏹 Guardian of the Verdant Canopy', 'The Sylvan Archer moves unseen through the ancient forests. Her arrows never miss their mark, and she can communicate with all woodland creatures.', '$299.99', 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="h-64 epic-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sylvan Archer" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 epic-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Sylvan Archer</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-purple-500"></span>
+                            <span class="text-sm font-bold">Epic</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">🏹 Guardian of the Verdant Canopy</p>
+                        <div class="text-purple-800 font-bold text-lg">$299.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 3 - Rare -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Crimson Templar', 'rare', '⚔️ Blade of Holy Fire', 'The Crimson Templar is the last of his order, sworn to eradicate darkness wherever it may hide. His sword burns with divine fire that purifies all it touches.', '$149.99', 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="h-64 rare-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Crimson Templar" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 rare-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Crimson Templar</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-blue-500"></span>
+                            <span class="text-sm font-bold">Rare</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">⚔️ Blade of Holy Fire</p>
+                        <div class="text-purple-800 font-bold text-lg">$149.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 4 - Uncommon -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Arcane Scholar', 'uncommon', '🧙‍♂️ Keeper of Forbidden Knowledge', 'The Arcane Scholar has devoted centuries to uncovering lost magical secrets. His library contains spells that could reshape reality itself.', '$79.99', 'https://images.unsplash.com/photo-1608889475678-354620f3b005?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="h-64 uncommon-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1608889475678-354620f3b005?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Arcane Scholar" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 uncommon-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Arcane Scholar</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-green-500"></span>
+                            <span class="text-sm font-bold">Uncommon</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">🧙‍♂️ Keeper of Forbidden Knowledge</p>
+                        <div class="text-purple-800 font-bold text-lg">$79.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 5 - Common -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Ironclad Warrior', 'common', '🛡️ Steel and Resolve', 'The Ironclad Warrior is a veteran of countless battles. His armor bears the scars of a hundred fights, yet his resolve remains unbroken.', '$29.99', 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="h-64 common-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Ironclad Warrior" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 common-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Ironclad Warrior</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-gray-500"></span>
+                            <span class="text-sm font-bold">Common</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">🛡️ Steel and Resolve</p>
+                        <div class="text-purple-800 font-bold text-lg">$29.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 6 - Mythic -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('All-Seeing Oracle', 'mythic', '👁️ Vision of Eternity', 'The All-Seeing Oracle perceives all possible futures simultaneously. Her prophecies are cryptic but always come to pass, often in unexpected ways.', '$999.99', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="h-64 mythic-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="All-Seeing Oracle" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 mythic-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">All-Seeing Oracle</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-pink-500"></span>
+                            <span class="text-sm font-bold">Mythic</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">👁️ Vision of Eternity</p>
+                        <div class="text-purple-800 font-bold text-lg">$999.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 7 - Rare -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Shadow Assassin', 'rare', '🗡️ Silent Death', 'The Shadow Assassin moves unseen in the darkness. Her victims never hear her coming, and their last sight is the glint of her twin daggers.', '$159.99', 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')">
+                    <div class="h-64 rare-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Shadow Assassin" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 rare-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Shadow Assassin</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-blue-500"></span>
+                            <span class="text-sm font-bold">Rare</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">🗡️ Silent Death</p>
+                        <div class="text-purple-800 font-bold text-lg">$159.99</div>
+                    </div>
+                </div>
+                
+                <!-- Character 8 - Epic -->
+                <div class="card rounded-xl overflow-hidden cursor-pointer" onclick="openModal('Stormcaller', 'epic', '⚡ Wielder of the Tempest', 'The Stormcaller commands the fury of the skies. Lightning answers her call, and thunder follows her footsteps.', '$349.99', 'https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2094&q=80')">
+                    <div class="h-64 epic-bg flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Stormcaller" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-4 border-t-4 epic-border">
+                        <h3 class="font-bold text-lg mb-1 card-font">Stormcaller</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="rarity-dot bg-purple-500"></span>
+                            <span class="text-sm font-bold">Epic</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">⚡ Wielder of the Tempest</p>
+                        <div class="text-purple-800 font-bold text-lg">$349.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rarities Section -->
+    <section id="rarities" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 card-font">CHARACTER RARITIES</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Common -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-3 bg-gray-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="rarity-dot bg-gray-500"></span>
+                            <h3 class="text-xl font-bold ml-2">Common</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Standard characters that form the backbone of our universe. Well-known but not particularly unique.</p>
+                        <div class="text-sm">
+                            <p class="font-semibold">Traits:</p>
+                            <p>Basic abilities, common backstory</p>
+                            <p class="font-semibold mt-2">Price Range:</p>
+                            <p>$19.99 - $49.99</p>
+                            <p class="font-semibold mt-2">Availability:</p>
+                            <p>Unlimited</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Uncommon -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-3 bg-green-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="rarity-dot bg-green-500"></span>
+                            <h3 class="text-xl font-bold ml-2">Uncommon</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Characters with some unique traits or specialized skills that set them apart from common ones.</p>
+                        <div class="text-sm">
+                            <p class="font-semibold">Traits:</p>
+                            <p>Specialized skills, more detailed backstory</p>
+                            <p class="font-semibold mt-2">Price Range:</p>
+                            <p>$59.99 - $99.99</p>
+                            <p class="font-semibold mt-2">Availability:</p>
+                            <p>5,000 per character</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rare -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-3 bg-blue-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="rarity-dot bg-blue-500"></span>
+                            <h3 class="text-xl font-bold ml-2">Rare</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Powerful characters with unique abilities and significant roles in the lore of our universe.</p>
+                        <div class="text-sm">
+                            <p class="font-semibold">Traits:</p>
+                            <p>Unique abilities, significant lore impact</p>
+                            <p class="font-semibold mt-2">Price Range:</p>
+                            <p>$129.99 - $199.99</p>
+                            <p class="font-semibold mt-2">Availability:</p>
+                            <p>1,000 per character</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Epic -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-3 bg-purple-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="rarity-dot bg-purple-500"></span>
+                            <h3 class="text-xl font-bold ml-2">Epic</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Legendary characters that shape the destiny of entire regions with their extraordinary powers.</p>
+                        <div class="text-sm">
+                            <p class="font-semibold">Traits:</p>
+                            <p>Extraordinary powers, world-shaping abilities</p>
+                            <p class="font-semibold mt-2">Price Range:</p>
+                            <p>$249.99 - $399.99</p>
+                            <p class="font-semibold mt-2">Availability:</p>
+                            <p>500 per character</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Legendary -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-3 bg-yellow-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="rarity-dot bg-yellow-500"></span>
+                            <h3 class="text-xl font-bold ml-2">Legendary</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Mythical beings whose actions determine the fate of entire civilizations. Their power is unmatched.</p>
+                        <div class="text-sm">
+                            <p class="font-semibold">Traits:</p>
+                            <p>Reality-altering powers, ancient origins</p>
+                            <p class="font-semibold mt-2">Price Range:</p>
+                            <p>$499.99 - $799.99</p>
+                            <p class="font-semibold mt-2">Availability:</p>
+                            <p>100 per character</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mythic -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-3 bg-pink-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="rarity-dot bg-pink-500"></span>
+                            <h3 class="text-xl font-bold ml-2">Mythic</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">God-like entities that transcend mortal understanding. Their very existence bends the rules of reality.</p>
+                        <div class="text-sm">
+                            <p class="font-semibold">Traits:</p>
+                            <p>Cosmic powers, reality-defying abilities</p>
+                            <p class="font-semibold mt-2">Price Range:</p>
+                            <p>$899.99 - $1,499.99</p>
+                            <p class="font-semibold mt-2">Availability:</p>
+                            <p>10 per character</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Display Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <h2 class="text-3xl font-bold mb-6 card-font">PREMIUM CHARACTER DISPLAYS</h2>
+                    <p class="text-gray-700 mb-4">
+                        Showcase your character collection with our custom-designed display stands and frames. Each display is crafted to highlight the unique qualities of your Mythic Collectibles characters.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Choose from wall-mounted displays, rotating pedestals, or secure locking cases. All displays feature museum-quality materials and UV protection to preserve your collection.
+                    </p>
+                    <a href="#" class="inline-block bg-purple-800 text-white px-6 py-3 rounded-full font-bold hover:bg-purple-700 transition">View Display Options</a>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-100 rounded-xl overflow-hidden shadow-xl p-8">
+                        <div class="flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Premium Display" class="rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">JOIN THE MYTHIC COLLECTORS GUILD</h2>
+            <p class="mb-6 max-w-2xl mx-auto">Subscribe for exclusive character releases, collector events, and special offers available only to guild members.</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l-md focus:outline-none text-gray-900">
+                <button class="bg-yellow-500 text-gray-900 px-6 py-3 rounded-r-md font-bold hover:bg-yellow-400 transition">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-2xl font-bold card-font">MYTHIC COLLECTIBLES</div>
+                    <p class="text-gray-400 text-sm mt-1">© 2023 Mythic Collectibles. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Shipping</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="characterModal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 opacity-0 invisible">
+        <div class="modal-content bg-white rounded-lg overflow-hidden w-full max-w-4xl max-h-screen overflow-y-auto">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black bg-opacity-50 text-white rounded-full p-2 z-10 hover:bg-opacity-70 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div id="modalImage" class="h-96 w-full bg-gray-200">
+                    <!-- Image will be loaded here -->
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h2 id="modalTitle" class="text-3xl font-bold card-font"></h2>
+                            <div id="modalSubtitle" class="text-xl text-gray-600"></div>
+                        </div>
+                        <div id="modalPrice" class="text-2xl font-bold text-purple-800"></div>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <span id="modalRarityDot" class="rarity-dot"></span>
+                        <span id="modalRarity" class="text-sm font-bold"></span>
+                    </div>
+                    <p id="modalDescription" class="text-gray-700 mb-6"></p>
+                    <div class="flex space-x-4">
+                        <button class="bg-purple-800 text-white px-6 py-3 rounded-full font-bold hover:bg-purple-700 transition flex-1">Add to Cart</button>
+                        <button class="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-gray-300 transition flex-1">Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to handle mobile menu toggle if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenu = document.querySelector('.hidden.md\\:flex');
+            
+            if(mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                    mobileMenu.classList.toggle('flex-col');
+                    mobileMenu.classList.toggle('absolute');
+                    mobileMenu.classList.toggle('top-16');
+                    mobileMenu.classList.toggle('left-0');
+                    mobileMenu.classList.toggle('right-0');
+                    mobileMenu.classList.toggle('bg-purple-900');
+                    mobileMenu.classList.toggle('p-4');
+                    mobileMenu.classList.toggle('space-y-4');
+                    mobileMenu.classList.toggle('space-x-0');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Modal functions
+        function openModal(title, rarity, subtitle, description, price, imageUrl) {
+            const modal = document.getElementById('characterModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSubtitle = document.getElementById('modalSubtitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalRarityDot = document.getElementById('modalRarityDot');
+            const modalRarity = document.getElementById('modalRarity');
+            const modalImage = document.getElementById('modalImage');
+            
+            // Set modal content
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle;
+            modalDescription.textContent = description;
+            modalPrice.textContent = price;
+            modalRarity.textContent = rarity.charAt(0).toUpperCase() + rarity.slice(1);
+            
+            // Set rarity dot color
+            const rarityColors = {
+                'common': 'bg-gray-500',
+                'uncommon': 'bg-green-500',
+                'rare': 'bg-blue-500',
+                'epic': 'bg-purple-500',
+                'legendary': 'bg-yellow-500',
+                'mythic': 'bg-pink-500'
+            };
+            modalRarityDot.className = `rarity-dot ${rarityColors[rarity]}`;
+            
+            // Set image
+            modalImage.innerHTML = `<img src="${imageUrl}" alt="${title}" class="w-full h-full object-cover">`;
+            
+            // Show modal
+            modal.classList.add('active');
+            modal.classList.remove('opacity-0', 'invisible');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('characterModal');
+            modal.classList.remove('active');
+            modal.classList.add('opacity-0', 'invisible');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        document.getElementById('characterModal').addEventListener('click', function(e) {
+            if(e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
